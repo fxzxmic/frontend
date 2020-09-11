@@ -17,7 +17,7 @@ jobs:
 
       - name: Build project
         run: |
-          export CI = false
+          export CI=false
           yarn upgrade
           yarn install
           yarn run build
