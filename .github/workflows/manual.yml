@@ -21,4 +21,9 @@ jobs:
           yarn upgrade
           yarn install
           yarn run build
-
+          
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build
+          path: ./build
