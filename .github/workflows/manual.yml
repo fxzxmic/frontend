@@ -17,18 +17,8 @@ jobs:
 
       - name: Build project
         run: |
+          export CI = false
           yarn upgrade
           yarn install
           yarn run build
 
-      - name: CommitBinaries
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     	
-        run: |
-         git config user.email "a@b.c"
-         git config user.name "$GITHUB_ACTOR"
-         git checkout master
-         sudo git pull origin master
-         sudo git commit -m "[$GITHUB_WORKFLOW]Auto commit from Github Action"
-         git remote set-url --push origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
-         git push origin master	
